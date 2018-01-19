@@ -1,0 +1,85 @@
+<?
+
+$field = $vars['field'];
+$vars = $vars['vars'];
+
+if( count( $field['modes'] ) > 0 ){
+
+	$wrapper_id = 'wrapper_' . randstr(6);
+
+	$vars['form']->data['rows'][ $wrapper_id ] = '';
+
+}
+
+
+
+?>
+<div <?if( count( $field['modes'] ) > 0 ):?>id="<?=$wrapper_id?>"<?endif;?> data-display="table" class="wrapper div_table<?if( count( $field['modes'] ) > 0 ):?> form-mode <?=implode( ' ', $field['modes'] );?><?endif;?>" <?if( in_array( $vars['form']->mode, $field['modes'] ) == true ):?>style="display: table;"<?endif;?> >
+
+	<?ob_start();?>
+
+	<div class="field_row div_tr">
+
+		<?if( $field['wide'] == true ):?>
+			<div class="wide_field_wrapper div_td">
+		<?else:?>
+			<div class="field_info div_td">
+		<?endif;?>
+
+			<?if( $field['title'] != '' ):?>
+				<div class="field_title"><?=$field['title'];?></div>
+			<?endif;?>
+
+			<? // BEGIN Комментарий поля. ?>
+			<?if( $field['title_comment'] != '' ):?>
+				<div class="title_comment"><?=$field['title_comment'];?></div>
+			<?endif;?>
+			<? // END Комментарий поля. ?>
+
+		<?if( $field['wide'] == false ):?>
+			</div>
+			<div class="field_data div_td">
+		<?endif;?>
+
+			<?if( $field['type'] == 'checkbox' && is_array( $field['html'] ) == true ):?>
+				<?foreach( $field['html'] as $html ):?>
+					<?=$html;?>
+				<?endforeach;?>
+			<?else:?>
+				<?=$field['html'];?>
+			<?endif;?>
+
+			<?if( $field['field_comment'] != '' && $field['type'] != 'captcha' ):?>
+				<div class="field_comment"><?=$field['field_comment'];?></div>
+			<?endif;?>
+		</div>
+
+	</div>
+
+	<?
+
+	$content = ob_get_contents();
+
+	ob_end_clean();
+
+	if( count( $field['modes'] ) > 0 ){
+
+		$vars['form']->data['rows'][ $wrapper_id ] = $content;
+
+	}
+
+//	else {
+
+//		echo $content;
+
+//	}
+
+	if( in_array( $vars['form']->mode, $field['modes'] ) == true || count( $field['modes'] ) == 0 ){
+
+		echo $content;
+
+	}
+
+	?>
+
+</div>

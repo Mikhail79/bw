@@ -1,0 +1,110 @@
+.kv_wrapper{
+	max-width: 600px;
+}
+
+.kv_wrapper .add_kv {
+	display: block;
+	color: #333;
+	background-color: #ddd;
+	padding: 8px;
+	text-align: center;
+	/*
+	color: #ccc;
+	background-color: #fafafa;
+	*/
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.kv_wrapper .add_kv span {
+	display: inline-block;
+	min-height: 16px;
+/*	background: url('add_action.png') no-repeat right center; */
+	background: url('add_action2.png') no-repeat right center;
+	padding-right: 20px;
+}
+
+.kv_wrapper .add_kv:hover {
+	color: #333;
+	text-decoration: none;
+	background-color: #ddd;
+}
+
+.kv_wrapper .add_kv:hover span {
+	background: url('add_action2.png') no-repeat right center;
+}
+
+.kv_wrapper .list {
+	margin-bottom: 20px;
+}
+
+
+.kv_wrapper .list td,
+.kv_wrapper .list th
+{
+	padding: 6px;
+}
+
+
+.kv_wrapper .list > thead > tr > th:nth-of-type(3) {
+	width: 40px;
+}
+
+.kv_wrapper .list > tbody > tr > td:nth-of-type(3) {
+	text-align: center;
+}
+
+/*
+.kv_wrapper input[type="text"] {
+	border: #ccc solid 1px;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 2px;
+	font-family: Verdana;
+	font-size: 12px;
+}
+*/
+
+.kv_wrapper .delete_button {
+	background: url('../form/reset.png') no-repeat scroll 0 0 transparent;
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+
+.kv_wrapper .command_icon {
+	text-align: center;
+}
+
+.kv_wrapper .command_icon > span {
+	width: 16px;
+	height: 2px;
+	background-color: #444;
+	display: inline-block;
+	position: relative;
+	top: -4px;
+}
+
+.kv_wrapper .command_icon > span:before {
+	content: '';
+	top: -4px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background-color: #444;
+	display: block;
+	position: absolute;
+}
+
+
+
+.kv_wrapper .command_icon > span:after {
+	content: '';
+	top: 4px;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background-color: #444;
+	display: block;
+	position: absolute;
+}

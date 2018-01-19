@@ -1,0 +1,249 @@
+
+
+/* Форма. */
+form.bw_form {
+
+}
+/* Оболочка для полей */
+table.bw_form_wrapper {
+	width: 100%;
+}
+
+
+/* Для широких полей формы расположенных в двух ячейках. */
+td.bw_form_wide_field_wrapper {
+	width: 100%;
+	padding: 4px 4px 4px 4px;
+}
+/* Для коротких полей. Здесь выводится title и comment. */
+.bw_form .bw_form_field_info {
+	width: 35%;
+	vertical-align: top;
+	padding: 4px 4px 4px 4px;
+}
+/* Для коротких полей. Здесь выводится само поле. */
+.bw_form .bw_form_field_data {
+	width: 65%;
+	vertical-align: top;
+	padding: 4px 4px 4px 4px;
+}
+/* Название поля. */
+div.bw_form_field_title {
+	font-weight: bold;
+	margin: 2px 0px 2px 0px;
+}
+/* Пояснения к полю. */
+div.bw_form_field_comment {
+	margin: 2px 0px 2px 0px;
+}
+/* Оболочка для кнопок. */
+div.bw_form_buttons {
+	margin: 20px 0px 20px 0px;
+	text-align: center;
+
+}
+/* Название формы. */
+div.bw_form_title {
+
+}
+
+div.bw_form_comment {
+
+}
+/* Сообщение формы. В том числе для ошибок. */
+div.bw_form_message {
+	margin: 0px 0px 5px 0px;
+}
+/* Кнопка. */
+input.bw_form_button {
+	width: 120px;
+	height: 30px;
+}
+/* Поле для закачки файла. */
+input.bw_form_file {
+	width: 100%;
+	/* padding: 4px 4px 4px 4px; */
+}
+/* Поле. Для <textarea>, <input>, <select> */
+textarea.bw_form_field {
+	width: 100%;
+	/*  	padding: 4px 4px 4px 4px;
+		  left:0%;right:0%; */
+}
+input.bw_form_field, select.bw_form_field {
+	width: 100%;
+	/*	padding: 4px 4px 4px 4px;
+		left:0%;right:0%; */
+}
+/* Сообщение под полем. */
+div.bw_form_field_message {
+	margin: 2px 0px 2px 0px;
+	clear:both;
+}
+
+
+
+
+
+/* forms.css */
+
+
+.bw_form {
+
+}
+
+.bw_form div.title {
+
+}
+
+.bw_form div.comment {
+
+}
+
+.bw_form div.messages {
+	margin-bottom: 0px;
+}
+
+/* Для группировки полей. */
+.bw_form fieldset {
+	margin-bottom: 10px;
+	border-color: #6991A9;
+	border-style: solid;
+	border-style-inner: solid;
+	padding: 0px;
+}
+
+.bw_form fieldset .fieldset_title {
+	background-color: #f1f1f1;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 15px;
+	margin-bottom: 10px;
+}
+
+
+.bw_form fieldset.minimized {
+	border-bottom-width: 0;
+	border-left-width: 0;
+	border-right-width: 0;
+	padding: 10px 10px 0 10px;
+}
+
+.bw_form legend {
+	padding: 0 4px;
+}
+
+.bw_form legend a {
+	cursor: pointer;
+	background: url('/yadro/interface/images/expanded.png') no-repeat left center;
+	padding-left: 11px;
+	text-decoration: none;
+}
+
+.bw_form legend a.minimized {
+	background: url('/yadro/interface/images/collapsed.png') no-repeat left center;
+}
+
+.bw_form .buttons {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.bw_form div.field_title {
+	margin-bottom: 4px;
+	font-weight: bold;
+}
+
+.bw_form div.field_comment {
+	margin-bottom: 2px;
+}
+
+.bw_form .field_data {
+	width: 70%;
+	vertical-align: top;
+	padding: 4px 4px 4px 4px;
+}
+
+.bw_form .wide_field_wrapper {
+	width: 100%;
+	padding: 4px 4px 4px 4px;
+}
+
+.bw_form .field_info {
+	width: 30%;
+	vertical-align: top;
+	padding: 4px 4px 4px 4px;
+	text-align: right;
+}
+
+.bw_form .wrapper {
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.bw_form div.field_comment {
+
+}
+
+.bw_form div.field_message {
+	margin-bottom: 4px;
+}
+
+.bw_form .file_info {
+	background-color: #EEEEEE;
+	padding: 5px;
+}
+
+.form_field_message.error {
+	color: #FF0000;
+}
+
+.bw_form .tags {
+	border: #ccc solid 1px;
+	padding: 0;
+
+}
+
+
+.bw_form .div_table {
+	display: table;
+	width: 100%;
+}
+
+.bw_form .div_tr {
+	display: table-row;
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.bw_form .div_td {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.bw_form .form-mode {
+	display: none;
+}
+
+
+
+.field_url {
+	position: relative;
+}
+
+.field_url .clear_button {
+	display: block;
+	width: 25px;
+	min-height: 16px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	position: absolute;
+/*	background: url('../autocomplete/reset.png') no-repeat center center; */
+	background: url('reset.png') no-repeat center center;
+}
+
+
+.field_url .bw_editbox {
+	padding: 4px 25px 4px 6px;
+}

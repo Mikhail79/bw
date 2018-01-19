@@ -1,0 +1,39 @@
+
+<link rel="stylesheet" href="<?=$vars['css_url'];?>" />
+<script>
+	function debug_get_request_info( id ){
+
+		//var list = document.querySelectorAll('request_info');
+		//console.log(list);
+
+		$('.debug_info .request_info').hide();
+
+		$('#' + id).show();
+
+	}
+</script>
+<div style="max-height: 200px; overflow: auto;">
+	<div class="debug_console">
+		<div class="debug_list" id="bw_debug_list">
+			<div><a href="javascript:;" onclick="return debug_get_request_info('debug_main_request');">Первый запрос</a></div>
+			<div><input type="checkbox" name="" id="debug_list_refresh" /> <label>Остановить обновление списка</label></div>
+			<div>Запросы XMLHttpRequest</div>
+			<ul id="debug_xhr">
+			</ul>
+			<div>Запросы WebSocket</div>
+			<ul>
+			</ul>
+		</div>
+		<div class="debug_info">
+
+			<div class="request_info" id="debug_main_request" style="display: block;">
+				<?require(__DIR__.'request.phtml');?>
+			</div>
+
+
+
+		</div>
+
+	</div>
+	<div class="div_expander" onmousedown="div_expander(event,this)"></div>
+</div>

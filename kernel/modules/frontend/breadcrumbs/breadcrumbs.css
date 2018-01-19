@@ -1,0 +1,21 @@
+.breadcrumbs {
+	margin-bottom: 20px;
+}
+
+.breadcrumbs > a:last-child {
+	text-decoration: none;
+	color: #444;
+}
+
+.breadcrumbs > .separator {
+	display: inline-block;
+	width: 8px;
+	height: 11px;
+	background: url('arrow.png');
+	margin: 0 8px;
+}
+
+.breadcrumbs > a {
+
+}
+

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="generator" content="BlueWhale PHP Framework" />
+		<title><?=$vars['title'];?></title>
+
+
+		<?//=$vars['scripts'];?>
+		<?//=$vars['head_scripts'];?>
+
+
+		<?=$vars['head_styles'];?>
+
+	</head>
+	<body>
+		<?=$vars['debug_console'];?>
+
+
+
+		<div class="page">
+
+			<header>
+
+			</header>
+
+			<div class="content">
+				<?if( $vars['h1'] != '' ):?>
+					<h1><?=$vars['h1'];?></h1>
+				<?endif;?>
+
+				<?if( $vars['breadcrumbs_str'] != '' ):?>
+					<div class="breadcrumbs"><?=$vars['breadcrumbs_str'];?></div>
+				<?endif;?>
+
+				<div id="message_wrapper">
+					<?if( count( $vars['messages'] ) > 0 ):?>
+						<?foreach( $vars['messages'] as $message ):?>
+							<?=$message;?>
+						<?endforeach;?>
+					<?endif;?>
+				</div>
+
+				<main>
+					<?=$vars['content'];?>
+				</main>
+			</div>
+
+			<footer>
+
+			</footer>
+
+		</div>
+
+
+		<?=$vars['styles'];?>
+
+		<script src="/kernel/modules/main/loader.js" data-skip="true"></script>
+		<script src="/kernel/modules/main/functions.js" data-skip="true"></script>
+		<script src="/kernel/modules/main/dom.js" data-skip="true"></script>
+		
+		<script src="/kernel/other/jquery/jquery-2.2.1.min.js" data-skip="true"></script>
+		<script src="/kernel/other/jquery/jquery.datetimepicker.js" data-skip="true"></script>
+		<script src="/kernel/other/tokeninput/jquery.tokeninput.js" data-skip="true"></script>
+
+
+		<script src="/kernel/modules/frontend/combobox/combobox.js" data-skip="true"></script>
+		<script src="/kernel/modules/frontend/spinner/spinner.js" data-skip="true"></script>
+		<script src="/kernel/modules/frontend/mask/mask.js" data-skip="true"></script>
+		<script src="/kernel/modules/frontend/textbox/textbox.js" data-skip="true"></script>
+		<script src="/kernel/modules/form/form/form.js" data-skip="true"></script>
+
+
+		<script data-skip="true">
+
+			var back_url = '<?=$vars['back_url'];?>';
+
+			<?//=app::$page->get_javascript('variables');?>
+
+			var load_list = [
+				function(){
+				},
+				<?foreach( $vars['scripts_for_async_load'] as $script ):?>
+					'<?=$script[0];?>',
+				<?endforeach;?>
+				function(){
+
+					back_url = bw.base64_decode( back_url );
+
+					bw.ready(function(){
+
+						bw.prepare_external_links( external_links );
+
+					});
+
+				}
+			];
+
+			bw.js_parallel_load( load_list );
+
+		</script>
+
+
+
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<div class="debug_console_title">Консоль отладки:</div>
+<div class="debug_console_info">
+	<?//print_R($_SERVER);?>
+	Время: <b><?=date( 'd.m.Y H:i:s', $_SERVER['REQUEST_TIME'] );?></b><br />
+	PHP: <b><?=$vars['php_version'];?></b><br />
+	БД: <b><?=$vars['db']['name'];?></b> (host: <?=$vars['db']['host'];?>, port: <?=$vars['db']['port'];?>, user: <?=$vars['db']['user'];?>, persistent: <?=( $vars['db']['persistent'] == true ? 'true' : 'false' );?>)<br />
+	Память используемая скриптом memory_get_usage(): <b><?=$vars['memory_get_usage'];?> байт</b>, допустимо: <b><?=$vars['memory_limit'];?> байт</b><br />
+	Память используемая скриптом memory_get_peak_usage(): <b><?=$vars['memory_get_peak_usage'];?> байт</b>, допустимо: <b><?=$vars['memory_limit'];?> байт</b><br />
+	Ваш IP: <b><?=$vars['remote_addr'];?></b><br />
+	ID сессии: <b><?=$vars['session_id'];?></b><br />
+	Тип хранилища кэша: <b><?=$vars['cache_engine'];?></b><br />
+	Тип хранилища сессий: <b><?=$vars['session_engine'];?></b><br />
+	Кэширование: <b>включено</b><br />
+	Строка запроса $_SERVER['QUERY_STRING']: <b><?=$vars['query_string'];?></b><br />
+	Сервер IP $_SERVER['REQUEST_METHOD']: <b><?=$vars['request_method'];?></b><br />
+	$_SERVER['REQUEST_METHOD']: <b><?=$vars['request_method'];?></b><br />
+	$_SERVER['REQUEST_URI']: <b><?=$vars['request_uri'];?></b><br />
+	Директория сайта $_SERVER['DOCUMENT_ROOT']: <b><?=$vars['document_root'];?></b><br />
+	Кол-во запросов к БД: <b><?=$vars['queries_count'];?></b><br />
+	Время генерации страницы: <b><?=$vars['gen_time'];?> секунд</b>, допустимо: <b><?=$vars['max_execution_time'];?> секунд</b><br />
+</div>
+<div>
+	<div>Прочитанные ключи и счётчик вызовов на чтение.</div>
+	<ul>
+		<?foreach( $vars['cache']['read_keys'] as $key => $cnt ):?>
+			<li><?=$key;?>: <?=$cnt;?></li>
+		<?endforeach;?>
+	</ul>
+	<div>Записанные ключи и счётчик вызовов на запись.</div>
+	<ul>
+		<?foreach( $vars['cache']['recorded_keys'] as $key => $cnt ):?>
+			<li><?=$key;?>: <?=$cnt;?></li>
+		<?endforeach;?>
+	</ul>
+</div>
+<div class="debug_disk_space">
+	<?=$vars['disk_space'];?>
+</div>
+<div class="debug_console_queries"><?=$vars['queries'];?></div>
+<div class="debug_console_title">Подключенные файлы get_included_files(), <?=$vars['included_files_count'];?>:</div>
+<div class="included_files"><?=$vars['included_files'];?></div>
+<?=$vars['variables'];?>

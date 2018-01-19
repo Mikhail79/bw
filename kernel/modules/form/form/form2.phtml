@@ -1,0 +1,201 @@
+<?
+
+$vars['form']->data['rows'] = [];
+
+
+?>
+<!-- Form "<?=$vars['name'];?>". -->
+<div class="<?=$vars['class'];?>" style="width: <?=$vars['width'];?>;">
+
+	<? // BEGIN Сообщения формы. ?>
+	<?if( count($vars['messages']) > 0 ):?>
+		<div style="margin-bottom: 10px;">
+			<?foreach( $vars['messages'] as $message ):?>
+				<?=$message;?>
+			<?endforeach;?>
+		</div>
+	<?endif;?>
+	<? // END Сообщения формы. ?>
+
+	<? // BEGIN Заголовок формы. ?>
+	<?if( $vars['title'] != '' ):?>
+		<div class="title"><?=$vars['title'];?></div>
+	<?endif;?>
+	<? // END Заголовок формы. ?>
+
+
+	<?if( $vars['wrapper'] == true ):?>
+		<form onsubmit="<?=$vars['onsubmit'];?>"
+		      enctype="<?=$vars['enctype'];?>"
+		      method="<?=$vars['method'];?>"
+		      action="<?=$vars['action'];?>"
+		      id="<?=$vars['id'];?>"
+		      name="<?=$vars['name'];?>">
+	<?endif;?>
+
+			<?if( count( $vars['modes'] ) > 0 ):?>
+			<input name="form_mode" type="hidden" value="<?=$vars['mode'];?>" />
+			<?endif;?>
+
+		<? // BEGIN Вывод скрытых полей. ?>
+		<?foreach( $vars['fields'] as $field ):?>
+			<?if( $field['type'] == 'hidden' ):?>
+				<?=$field['html'];?>
+			<?endif;?>
+		<?endforeach;?>
+		<? // END Вывод скрытых полей. ?>
+
+
+
+
+
+
+
+		<?if( count( $vars['fields'] ) > 0 ):?>
+
+			<?foreach( $vars['fields'] as $field ):?>
+
+				<?if( $field['type'] != 'hidden' && $field['draw'] == true && $field['tab_id'] == null && $field['fieldset_id'] == null ):?>
+
+					<?=app::$tpl->fetch( __DIR__ . '/form2_fields.phtml', [ 'vars' =>  $vars, 'field' => $field ], true );?>
+
+				<?endif;?>
+
+			<?endforeach;?>
+
+		<?endif;?>
+
+
+
+		<?if( count( $vars['fieldsets'] ) > 0 ):?>
+
+			<?foreach( $vars['fieldsets'] as $fieldset ):?>
+
+				<?
+
+				if( $fieldset['tab_id'] != null ){
+					continue;
+				}
+
+				?>
+
+				<fieldset>
+					<?if( $fieldset['legend'] != '' ):?><legend><?=$fieldset['legend'];?></legend><?endif;?>
+					<?if( $fieldset['title'] != '' ):?><div class="fieldset_title"><?=$fieldset['title'];?></div><?endif;?>
+
+					<?if( count( $fieldset['fields'] ) > 0 ):?>
+
+						<?foreach( $fieldset['fields'] as $field ):?>
+
+							<?=app::$tpl->fetch( __DIR__ . '/form2_fields.phtml', [ 'vars' =>  $vars, 'field' => $field ], true );?>
+
+						<?endforeach;?>
+
+					<?endif;?>
+
+				</fieldset>
+
+			<?endforeach;?>
+
+		<?endif;?>
+
+
+
+
+
+		<?if( count( $vars['tabs'] ) > 0 ):?>
+			<div class="bw_control">
+				<div class="tabs clearfix">
+					<?foreach( $vars['tabs'] as $tab ):?>
+						<a class="tab forbidden_select<?if( $tab['selected'] == true ):?> active<?endif;?>" title="<?=$tab['title'];?>" href="javascript:;"><?=$tab['title'];?></a>
+					<?endforeach;?>
+				</div>
+				<div>
+					<?foreach( $vars['tabs'] as $tab ):?>
+						<div class="tab_content<?if( $tab['selected'] == true ):?> active<?endif;?>">
+
+							<?if( count( $tab['fields'] ) > 0 ):?>
+
+								<?foreach( $tab['fields'] as $field ):?>
+
+									<?=app::$tpl->fetch( __DIR__ . '/form2_fields.phtml', [ 'vars' =>  $vars, 'field' => $field ], true );?>
+
+								<?endforeach;?>
+
+							<?endif;?>
+
+
+							<?if( count( $tab['fieldsets'] ) > 0 ):?>
+
+								<?foreach( $tab['fieldsets'] as $fieldset ):?>
+
+									<fieldset>
+										<?if( $fieldset['legend'] != '' ):?><legend><?=$fieldset['legend'];?></legend><?endif;?>
+										<?if( $fieldset['title'] != '' ):?><div class="fieldset_title"><?=$fieldset['title'];?></div><?endif;?>
+
+										<?if( count( $fieldset['fields'] ) > 0 ):?>
+
+											<?foreach( $fieldset['fields'] as $field ):?>
+
+												<?=app::$tpl->fetch( __DIR__ . '/form2_fields.phtml', [ 'vars' =>  $vars, 'field' => $field ], true );?>
+
+											<?endforeach;?>
+
+										<?endif;?>
+
+									</fieldset>
+
+								<?endforeach;?>
+
+							<?endif;?>
+
+
+						</div>
+					<?endforeach;?>
+				</div>
+			</div>
+
+		<?endif;?>
+
+
+
+
+
+		<? // BEGIN Вывод кнопок. ?>
+		<?if( count( $vars['buttons'] ) > 0 ):?>
+			<div class="buttons">
+				<?foreach( $vars['buttons'] as $button ):?>
+					<?=$button['html'];?>
+				<?endforeach;?>
+			</div>
+		<?endif;?>
+		<? // END Вывод кнопок. ?>
+
+<?if( $vars['wrapper'] == true ):?>
+	</form>
+<?endif;?>
+
+	<? // BEGIN Скрипт формы. ?>
+	<?if( $vars['javascript'] != '' ):?>
+		<script language="javascript">
+			<?=$vars['javascript'];?>
+		</script>
+	<?endif;?>
+	<? // END Скрипт формы. ?>
+
+</div>
+<!-- / Form "<?=$vars['name'];?>". -->
+
+<script>
+
+if( form_data == undefined ){
+
+	var form_data = {};
+
+}
+
+form_data['<?=$vars['id']?>'] = <?=json_encode( $vars['form']->data['rows'] );?>;
+
+
+
+</script>

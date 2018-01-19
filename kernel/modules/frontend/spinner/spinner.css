@@ -1,0 +1,66 @@
+.bw_spinner {
+	display: inline-block;
+	border: 1px solid #c5c5c5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #fff;
+	padding: 3px 32px 3px 6px;
+	position: relative;
+	min-width: 50px;
+	max-width: 80px;
+	-webkit-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.bw_spinner > input[type="text"] {
+	outline: none;
+	display: block;
+	box-sizing: border-box;
+	margin: 0;
+	width: 100%;
+	padding: 4px;
+	font-size: 100%;
+	/*font-size: 15px;*/
+	/*background-color: #f2f2f2;*/
+	border: none;
+	border-bottom: 1px solid #fff;
+	line-height: 22px;
+	/*
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+	*/
+}
+/*
+.bw_spinner > input[type="text"]:focus {
+	background-color: yellow;
+}
+*/
+.bw_spinner > a {
+	display: block;
+	position: absolute;
+	right: 3px;
+	width: 26px;
+
+}
+
+
+.bw_spinner > a.up {
+	top: 3px;
+	height: 16px;
+	background: url('spinner_up2.png') no-repeat center top 3px;
+}
+
+.bw_spinner > a.down {
+	bottom: 3px;
+	height: 15px;
+	background: url('spinner_down2.png') no-repeat center bottom 3px;
+}
+
+
+
+.bw_spinner > a:hover {
+	background-color: #eee;
+}

@@ -1,0 +1,83 @@
+<div class="kv_wrapper">
+
+	<table class="list" id="list_<?=$vars['html_id'];?>">
+		<thead>
+			<tr>
+				<th>Название</th>
+				<th>Значение</th>
+				<th class="command_icon"><span></span></th>
+			</tr>
+		</thead>
+		<tbody>
+			<?foreach( $vars['list'] as $key => $value ):?>
+				<?
+
+				$row_id = randstr(6);
+
+				?>
+				<tr id="row_<?=$row_id;?>">
+					<td><input class="bw_editbox" type="text" name="<?=$vars['name'];?>[<?=$row_id;?>][name]" value="<?=htmlspecialchars( $key, ENT_QUOTES | ENT_SUBSTITUTE );?>" /></td>
+					<td><input class="bw_editbox" type="text" name="<?=$vars['name'];?>[<?=$row_id;?>][value]" value="<?=htmlspecialchars( $value, ENT_QUOTES | ENT_SUBSTITUTE );?>" /></td>
+					<td><a href="#" class="delete_button"></a></td>
+				</tr>
+			<?endforeach;?>
+		</tbody>
+	</table>
+
+	<a href="#" class="add_kv" id="add_kv_<?=$vars['html_id'];?>"><span>Добавить</span></a>
+</div>
+
+
+<script>
+	bw.ready(function(){
+
+		var sms_delete_button = function(event){
+
+			event.preventDefault();
+
+			var r = confirm('Вы точно хотите удалить это свойство?');
+
+			if( r == false ){
+
+				return false;
+
+			}
+
+			var tr = bw.dom(this).closest('tr');
+
+			bw.dom(tr).remove();
+
+		}
+
+		bw.foreach('.delete_button', function(){
+
+			this.addEventListener('click', sms_delete_button);
+
+		});
+
+
+
+		bw.get_element('#add_kv_<?=$vars['html_id'];?>').addEventListener('click', function(event){
+
+			event.preventDefault();
+
+			var html_id = '<?=$vars['html_id'];?>';
+
+			var row_id = bw.rand_str(6);
+
+			var html = '';
+
+			html+= '<tr id="row_' + row_id + '">';
+			html+= '<td><input class="bw_editbox" type="text" name="<?=$vars['name'];?>[' + row_id + '][name]" /></td>';
+			html+= '<td><input class="bw_editbox" type="text" name="<?=$vars['name'];?>[' + row_id + '][value]" /></td>';
+			html+= '<td><a href="#" class="delete_button"></a></td>';
+			html+= '</tr>';
+
+			bw.dom('#list_' + html_id + ' > tbody').append( html );
+
+			bw.get_element('#row_' + row_id + ' .delete_button').addEventListener('click', sms_delete_button);
+
+		});
+
+	});
+</script>

@@ -1,0 +1,63 @@
+.sk_textbox {
+/*	border: #ccc solid 1px;
+	padding: 2px;
+	*/
+	background-color: #FFFFFF;
+}
+
+.sk_textbox textarea {
+	overflow: auto;
+	white-space: pre;
+	outline: none;
+	display: block;
+	box-sizing: border-box;
+	border: #c5c5c5 solid 1px;
+	margin: 0px;
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 100%;
+	resize: none;
+
+
+	padding: 4px 6px;
+	-webkit-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+	-moz-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+	box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
+	
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+
+
+.sk_textbox.bw_expander textarea {
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	
+	
+	-webkit-border-bottom-right-radius: 0px;
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomright: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	
+}
+
+
+.textbox_expander {
+	height: 10px;
+	cursor: s-resize;
+	background: #E0E0E0 url('expander.gif') no-repeat;
+	background-position: center;
+}
+
+
+.sk_textbox.sk_error {
+	border: red solid 1px;
+}

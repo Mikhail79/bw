@@ -1,0 +1,71 @@
+# ЗАМЕТКИ
+# 1. %{REQUEST_URI} (Apache) != $_SERVER['REQUEST_URI'] (PHP)
+
+# Кодировка сайта
+AddDefaultCharset utf-8
+
+# Запретить показ содержимого директории, в случае отсутствия индексного файла.
+Options -Indexes
+
+<IfModule mod_dir.c>
+	# Индексный файл.
+	DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_php5.c>
+	# Установки register_globals и magic_quotes_gpc вынесены сюда из config.php,
+	# так как в PHP5 они не могут устанавливаться в скриптах.
+
+	# Для безопасности следует отключить возможность автоматического
+	# внедрения внешних (глобальных) переменных.
+	php_flag register_globals off
+
+	# Запретить автоматическое экранирование.
+	php_flag magic_quotes_gpc off
+</IfModule>
+
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+
+	RewriteEngine on
+
+	RewriteBase /
+
+	# Запретить прямое (без параметров) обращение к index.php.
+	# Полезно для SEO.
+	RewriteCond %{REQUEST_URI} ^/index\.php$ [NC]
+
+	RewriteCond %{QUERY_STRING} ^$
+
+		RewriteRule ^index\.php$ / [R=301,L]
+
+	# Пропустить преобразование, если
+
+	# ... это файл
+	RewriteCond %{REQUEST_FILENAME} !-f
+
+	# ... или директория
+	RewriteCond %{REQUEST_FILENAME} !-d
+
+	# ... или ссылка.
+	RewriteCond %{REQUEST_FILENAME} !-l
+
+	# Игнорировать (не заходить в контроллер) отсутствие favicon.ico.
+	RewriteCond %{REQUEST_URI} !=/favicon.ico
+
+	# RewriteCond %{REQUEST_URI} !=/cp/.*
+
+		# Всё остальное передать в контроллер index.php в параметре _sef.
+		RewriteRule ^(.*)$ index.php?_route=$1 [L,QSA]
+
+	# Преобразование домена без www на www.
+	# RewriteCond %{HTTP_HOST} ^site.ru [NC]
+
+		# RewriteRule ^(.*)$ http://www.site.ru/$1 [R=301,L]
+
+	# Преобразование домена с www на домен без www.
+	# RewriteCond %{HTTP_HOST} ^www.site.ru$ [NC]
+
+		# RewriteRule ^(.*)$ http://site.ru/$1 [R=301,L]
+
+</IfModule>

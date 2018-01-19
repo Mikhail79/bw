@@ -1,0 +1,3 @@
+<FilesMatch "\.(php|html|sql|tpl|log|txt|zip|gz|jar|bak|ser)$">
+	deny from all
+</FilesMatch> 

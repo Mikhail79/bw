@@ -1,0 +1,210 @@
+* {
+	box-sizing: border-box;
+}
+
+
+body, div, dl, dt, dd, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+address, caption, cite, code, dfn, th, var, h1, h2, h3, h4, h5, h6 {
+	font-style: normal;
+	font-weight: normal;
+}
+
+caption, th {
+	text-align: left;
+}
+
+abbr, acronym, fieldset, img {
+	border: 0;
+}
+
+.clearfix:after {
+	content: '';
+	clear: both;
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	font-size: 0;
+}
+
+q:before {
+	content:'&laquo;';
+}
+
+q:after {
+	content:'&raquo;';
+}
+
+
+.forbidden_select {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+/* Чтобы работали переносы, должен быть указан lang="ru" в html */
+.hyphens {
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	-o-hyphens: auto;
+	-khtml-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+
+
+
+body, p, div, td {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+}
+
+
+body {
+	color: #3B3B3B;
+	background-color: #eee;
+	padding: 0;
+	margin: 0;
+}
+
+
+
+
+h1 {
+	font-size: 26px;
+	font-weight: normal;
+	margin: 0 0 15px;
+}
+
+h2 {
+	font-size: 24px;
+	font-weight: normal;
+	margin: 0 0 13px;
+}
+
+h3 {
+	font-size: 22px;
+	font-weight: normal;
+	margin: 0 0 11px;
+}
+
+h4 {
+	font-size: 20px;
+	font-weight: normal;
+	margin: 0 0 9px;
+}
+
+h5 {
+	font-size: 18px;
+	font-weight: normal;
+	margin: 0 0 7px;
+}
+
+h6 {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0 0 5px;
+}
+
+p {
+	line-height: 150%;
+	margin: 0 0 10px;
+}
+
+small {
+	font-size: 10px;
+}
+
+
+
+/*
+*::-moz-selection {
+	background-color: #ffcc00;
+	padding: 5px;
+}
+
+*::selection {
+	background-color: #ffcc00;
+	padding: 5px;
+}
+*/
+
+
+
+
+
+
+
+.page {
+	min-width: 240px;
+	max-width: 1280px;
+	margin: 0 auto;
+}
+
+.page .content {
+	background-color: #fff;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	padding: 20px;
+}
+
+.page header {
+	min-height: 100px;
+}
+
+.page footer {
+	min-height: 100px;
+}
+
+a {
+	color: #005580;
+}
+
+a:hover {
+	color: #B35E4D;
+}
+
+.page .breadcrumbs {
+	margin-bottom: 15px;
+}
+
+
+.page .breadcrumbs a {
+	text-decoration: none;
+}
+
+.page .breadcrumbs > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.page .breadcrumbs .separator {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	background: url('../images/arrow_right.png') no-repeat center center;
+}
+
+
+.page input,
+.page textarea,
+.page select
+{
+	font-family: 'Open Sans', sans-serif;
+	/*line-height: 100%;*/
+	font-size: 14px;
+}
